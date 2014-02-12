@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Simple strings. -->
+    <string name="app_name">HAPI Example</string>
+    <string name="exit">Exit</string>
+    <string name="make_request">Make Request</string>
+    <string name="field_names">Field Names (comma separated)</string>
+
+</resources>
+
