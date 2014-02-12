@@ -153,7 +153,7 @@ public class HAPIExample extends Activity implements RequestListener{
 			sb.append("%22"+fields[i].trim()+"%22");
     	}
     	
-    	RequestDetails rd = new RequestDetails(HAPI_BASE_URL+"/hapi/v1/users/"+USER_ID+"/vitals/?field_names=["+sb.toString()+"]&start_date=%222014-01-01%22&end_date=%222014-02-14%22","GET");
+    	RequestDetails rd = new RequestDetails(HAPI_BASE_URL+"/hapi/v1/users/"+USER_ID+"/vitals/?field_names=["+sb.toString()+"]&start_date=%222014-01-01%22&end_date=%222014-02-28%22","GET");
     	
     	rt.execute(rd);
     }
