@@ -22,14 +22,16 @@ public final class R {
         public static final int semi_black=0x7f020001;
     }
     public static final class id {
-        public static final int FieldNames=0x7f070002;
-        public static final int FieldNamesLabel=0x7f070001;
-        public static final int LastRequest=0x7f070005;
-        public static final int Result=0x7f070007;
-        public static final int exit=0x7f070004;
-        public static final int image=0x7f070000;
-        public static final int request=0x7f070003;
-        public static final int scrollView1=0x7f070006;
+        public static final int Button01=0x7f070000;
+        public static final int FieldNames=0x7f070003;
+        public static final int FieldNamesLabel=0x7f070002;
+        public static final int LastRequest=0x7f070007;
+        public static final int Result=0x7f070009;
+        public static final int exit=0x7f070006;
+        public static final int image=0x7f070001;
+        public static final int request=0x7f070004;
+        public static final int scrollView1=0x7f070008;
+        public static final int test_button=0x7f070005;
     }
     public static final class layout {
         public static final int hapi_example_activity=0x7f030000;
@@ -41,6 +43,7 @@ public final class R {
         public static final int exit=0x7f050001;
         public static final int field_names=0x7f050003;
         public static final int make_request=0x7f050002;
+        public static final int test=0x7f050004;
     }
     public static final class style {
         public static final int ActionButton=0x7f060000;

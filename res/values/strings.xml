@@ -3,8 +3,9 @@
     <!-- Simple strings. -->
     <string name="app_name">HAPI Example</string>
     <string name="exit">Exit</string>
-    <string name="make_request">Make Request</string>
+    <string name="make_request">GET</string>
     <string name="field_names">Field Names (comma separated)</string>
+    <string name="test">test</string>
 
 </resources>
 

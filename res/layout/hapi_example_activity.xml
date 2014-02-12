@@ -39,6 +39,12 @@
          allows us to find this object from the Java code.
     -->
 
+    <Button
+        android:id="@+id/Button01"
+        style="@style/ActionButton"
+        android:text="@string/make_request"
+        android:textColor="@color/red" />
+
     <ImageView
         android:id="@+id/image"
         android:layout_width="match_parent"
@@ -78,6 +84,12 @@
             style="@style/ActionButton"
             android:text="@string/make_request"
             android:textColor="@color/red" />
+
+        <Button
+            android:id="@+id/test_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/test" />
 
         <Button
             android:id="@+id/exit"

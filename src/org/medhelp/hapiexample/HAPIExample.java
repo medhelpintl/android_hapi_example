@@ -15,9 +15,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 /**
- * This class provides a basic demonstration of how to write an Android
- * activity. Inside of its window, it places a single view: an EditText that
- * displays and edits some internal text.
+ * This is a sample HAPI app showing how to interact with the HAPI server.
+ * 
+ * While the default GUID and AUTH_TOKEN do work, you should replace them with your own.
+ * Examine the documentation at developer.medhelp.org to see how. 
+ *
  */
 public class HAPIExample extends Activity implements RequestListener{
     
@@ -56,6 +58,7 @@ public class HAPIExample extends Activity implements RequestListener{
         // Hook up button presses to the appropriate event handler.
         ((Button) findViewById(R.id.exit)).setOnClickListener(mExitListener);
         ((Button) findViewById(R.id.request)).setOnClickListener(mRequestListener);
+        ((Button) findViewById(R.id.test_button)).setOnClickListener(mTestListener);
 
         httpClient = new DefaultHttpClient();        
     }
@@ -126,7 +129,16 @@ public class HAPIExample extends Activity implements RequestListener{
         	performRequest();
         }
     };
+
+    OnClickListener mTestListener = new OnClickListener() {
+        public void onClick(View v) {
+        	performTest();
+        }
+    };
     
+    /**
+     * Example to look up user health data points based on the field names entered by the user
+     */
     private void performRequest() {
     	RequestTask rt = new RequestTask(httpClient, this);
     	
@@ -141,9 +153,57 @@ public class HAPIExample extends Activity implements RequestListener{
 			sb.append("%22"+fields[i].trim()+"%22");
     	}
     	
-    	rt.execute(HAPI_BASE_URL+"/hapi/v1/users/"+USER_ID+"/vitals/?field_names=["+sb.toString()+"]&start_date=%222014-01-01%22&end_date=%222014-02-14%22");
+    	RequestDetails rd = new RequestDetails(HAPI_BASE_URL+"/hapi/v1/users/"+USER_ID+"/vitals/?field_names=["+sb.toString()+"]&start_date=%222014-01-01%22&end_date=%222014-02-14%22","GET");
+    	
+    	rt.execute(rd);
+    }
+
+    /**
+     * Example showing more complex interactions with the server.
+     * This is a very naive implementation which hand-builds JSON.
+     */
+    private void performTest() {
+    	
+    	// comment out this next line if you are performing tests
+    	mResult.setText("The test button currently does nothing. Examine the code to see what it can do.");
+    	
+    	RequestTask rt = new RequestTask(httpClient, this);
+    	
+    	// This section shows creating a new health data point
+    	/*
+    	RequestDetails rd = new RequestDetails(HAPI_BASE_URL+"/hapi/v1/users/"+USER_ID+"/vitals/","POST");
+
+    	// simple JSON request to create a new weight object
+    	String entity = "[{\"user_id\":"+USER_ID+",\"field_name\":\"Weight\",\"value\":200.0,\"date\":\"2014-02-01\"}]";
+    	
+    	rd.setEntity(entity);
+    	*/
+
+    	// This section shows updating a health data point. You'll need to use the medhelp_id you obtained from the creation,
+    	// or one which was returned from a GET
+    	/*
+    	RequestDetails rd = new RequestDetails(HAPI_BASE_URL+"/hapi/v1/users/"+USER_ID+"/vitals/","PUT");
+
+    	// simple JSON request to update weight object
+    	String entity = "[{\"medhelp_id\":\"948c66f07656013144481231392cd892\",\"user_id\":"+USER_ID+",\"field_name\":\"Weight\",\"value\":200.0,\"date\":\"2014-02-14\"}]";
+    	
+    	rd.setEntity(entity);
+    	*/
+
+    	// Section showing a delete. Again, you'll need a valid medhelp_id in here.
+    	/*
+    	RequestDetails rd = new RequestDetails(HAPI_BASE_URL+"/hapi/v1/users/"+USER_ID+"/vitals/?id=948c66f07656013144481231392cd892","DELETE");
+		*/
+
+
+    	// Uncomment this to actually execute the request
+    	//rt.execute(rd);
     }
     
+
+    /**
+     * This gets the callback once the RequestTask has completed
+     */
     public void requestResponse(String result) {
     	mResult.setText(result);
     	mLastRequest.setText(new Date().toString());
