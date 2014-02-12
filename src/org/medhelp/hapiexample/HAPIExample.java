@@ -17,7 +17,7 @@ import android.widget.TextView;
 /**
  * This is a sample HAPI app showing how to interact with the HAPI server.
  * 
- * While the default GUID and AUTH_TOKEN do work, you should replace them with your own.
+ * While the default USER_ID, GUID and AUTH_TOKEN do work, you should replace them with your own.
  * Examine the documentation at developer.medhelp.org to see how. 
  *
  */
@@ -27,8 +27,8 @@ public class HAPIExample extends Activity implements RequestListener{
     static final private int EXIT_ID = Menu.FIRST + 1;
 
     private static final String HAPI_BASE_URL = "https://hapi.medhelp.ws/";
-    private static final String USER_ID = "5652342";
 
+    private static final String USER_ID = "5652342";
     public static final String GUID = "01e1dd3e2638b74948b596c0ecbfc82c1046c712";
     public static final String AUTH_TOKEN = "52c894fbd8b3ea512428fb3c3ad67ffa77cf81e5";
     
