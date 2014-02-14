@@ -39,12 +39,6 @@
          allows us to find this object from the Java code.
     -->
 
-    <Button
-        android:id="@+id/Button01"
-        style="@style/ActionButton"
-        android:text="@string/make_request"
-        android:textColor="@color/red" />
-
     <ImageView
         android:id="@+id/image"
         android:layout_width="match_parent"
